@@ -16,9 +16,9 @@ sentences = [l.split('\t')[0] for l in lines]
 labels = [l.split('\t')[1] for l in lines]
 
 cvectorizer = CountVectorizer()
-X = cvectorizer.fit_transform(lines)
+X = cvectorizer.fit_transform(sentences)
 print("The input [%s] file has %d observations with %d features" % (dataset_name, X.shape[0], X.shape[1]))
-x_train, x_test, y_train, y_test = train_test_split(X, labels, test_size=test_size)
+x_train, x_test, y_train, y_test = train_test_split(X, labels, test_size=test_size, random_state=10)
 
 ##  Guassian naive bayes classifier  ##
 gnb_clf = GaussianNB()
